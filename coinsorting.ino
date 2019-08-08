@@ -15,8 +15,8 @@ int count1, count2, count5, count10, total = 0;
 
 
 void(* resetFunc) (void) = 0;
+
 void setup() {
-  Serial.begin(9600);
   pinMode(coin1 , INPUT);
   pinMode(coin2 , INPUT);
   pinMode(coin5, INPUT);
@@ -34,6 +34,7 @@ void loop() {
   btnState = digitalRead(btn);
 
   if (btnState == LOW) {
+    
     lcd.clear();
     delay(1000);
     lcd.setCursor(0, 0);
@@ -42,6 +43,7 @@ void loop() {
     resetFunc();
     
   } else {
+    
     spr1 = analogRead(coin1); //read the state of coi100n and store it as ir100
     spr2 = analogRead(coin2); //read the state of coi100n and store it as ir200
     spr5 = analogRead(coin5); //read the state of coi100n and store it as ir500
@@ -52,10 +54,12 @@ void loop() {
       count1 += 1;
       delay(100);
     }
+    
     if (spr2 <= 10) {
       count2 += 2;
       delay(100);
     }
+    
     if (spr5 <= 10) {
       count5 += 5;
       delay(100);
@@ -68,10 +72,10 @@ void loop() {
 
     total = count1 + count2 + count5 + count10;
     EEPROM.write(5, total);
+    
     lcd.setCursor(0, 1);
     lcd.print("TOTAL:");
     lcd.setCursor(7, 1);
     lcd.print(total);
   }
-
 }
