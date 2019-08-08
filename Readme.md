@@ -29,13 +29,9 @@ I am Blake Willis, this is project coin-sorting. If you have any enquiries, feel
 <p>支援<code>IIC I2C</code>協定，免焊接、只需用 Arduino 四個接口</p>
 <p>接線說明：</p>
 <pre><code>LCD 1602 LCM I2C → Arduino UNO（Arduino nano）
-
 GND→GND
-
 VCC→VCC(5V)
-
 SDA→SDA(或A4接口)
-
 SCL→SCL(或A5接口)
 </code></pre>
 <h3 id="kω-電阻">1kΩ 電阻</h3>
@@ -68,4 +64,10 @@ SCL→SCL(或A5接口)
 <td><a href="https://www.arduino.cc/en/Main/Software">下載並執行</a></td>
 </tr>
 </tbody>
-</table>
+</table><h3 id="newliquidcrystal第三方資料庫">NewliquidCrystal第三方資料庫</h3>
+<p><a href="https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads/">下載最新檔案<code>😉不需解壓.zip檔😉</code></a></p>
+<p>用以準備編寫程式</p>
+<h2 id="流程圖">流程圖</h2>
+<h2 id="電路圖">電路圖</h2>
+<h2 id="程式碼">程式碼</h2>
+
