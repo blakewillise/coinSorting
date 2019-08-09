@@ -47,7 +47,7 @@ SCL→SCL(或A5接口)
 <p><img src="https://www.taiwaniot.com.tw/wp-content/uploads/2015/12/40p_bump-300x300.jpg" alt="enter image description here"></p>
 <h3 id="麵包板">麵包板</h3>
 <p><img src="https://img.ruten.com.tw/s1/0/55/cd/21813829421517_943.jpg" alt="enter image description here"></p>
-<h2 id="軟件介紹">軟件介紹</h2>
+<h2 id="軟件介紹-software-introduction">軟件介紹 Software Introduction</h2>
 <h3 id="arduino-ide">Arduino IDE</h3>
 <p>集成開發環境 - 由Arduino.cc引入的官方軟件，主要用於在Arduino設備中編寫，編譯和上傳代碼。 幾乎所有Arduino模塊都與這個開源軟件兼容，並且隨時可以安裝和開始編譯代碼。</p>
 
@@ -67,14 +67,227 @@ SCL→SCL(或A5接口)
 </table><h3 id="newliquidcrystal第三方資料庫">NewliquidCrystal第三方資料庫</h3>
 <p><a href="https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads/">下載最新檔案<code>😉不需解壓.zip檔😉</code></a></p>
 <p>用以準備編寫程式</p>
-<h2 id="電路圖">電路圖</h2>
-<h2 id="程式碼">程式碼</h2>
+<h2 id="電路圖schematic-diagram">電路圖Schematic Diagram</h2>
+<h2 id="程式碼code">程式碼Code</h2>
 <p><a href="https://github.com/blakewillise/coinSorting/blob/master/coinsorting.ino">按此查閱</a></p>
-<h3 id="介紹">介紹</h3>
+<h3 id="基本認知">基本認知</h3>
+<pre><code>#include &lt;???&gt; 
+void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+</code></pre>
+<p>Arduino 基本格式</p>
+<pre><code>#include &lt;???&gt; 
+</code></pre>
+<p>標頭檔：用以準備編譯以下程式碼</p>
+<pre><code>void setup() {
+      // put your setup code here, to run once:
+    
+    }
+</code></pre>
+<p>初始化程式設定，此範圍只執行一次</p>
+<pre><code> void loop() {
+      // put your main code here, to run repeatedly:
+    
+    }
+</code></pre>
+<p>放置主要程式的地方，此範圍重覆執行</p>
+<h3 id="程式碼介紹">程式碼介紹</h3>
 <pre><code>#include &lt;Wire.h&gt;
 #include &lt;LCD.h&gt;
 #include &lt;LiquidCrystal_I2C.h&gt;
 #include &lt;EEPROM.h&gt;
 </code></pre>
 <p>標頭檔：用以準備編譯以下程式碼</p>
+<pre><code>LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE); 
+</code></pre>
+<p>初始化顯示屏設置</p>
+<pre><code>const int coin1 = A0;    
+const int coin2 = A1;
+const int coin5 = A2;
+const int coin10 = A3;
+const int btn = 2;
+int spr1, spr2, spr5, spr10, btnState = 0;
+int count1, count2, count5, count10, total = 0;
+</code></pre>
+<p>定義插槽及其對應變數為以下設定</p>
+
+<table>
+<thead>
+<tr>
+<th>變數</th>
+<th>對應變數</th>
+<th>意義</th>
+<th>插槽</th>
+<th>初始數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coin1</td>
+<td>spr1</td>
+<td>1元</td>
+<td>A0 <code>Analog</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td>coin2</td>
+<td>spr2</td>
+<td>2元</td>
+<td>A1 <code>Analog</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td>coin5</td>
+<td>spr5</td>
+<td>5元</td>
+<td>A2 <code>Analog</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td>coin10</td>
+<td>spr10</td>
+<td>10元</td>
+<td>A3 <code>Analog</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td>btn</td>
+<td>btnState</td>
+<td>確認掣</td>
+<td>7 <code>Digital</code></td>
+<td>0</td>
+</tr>
+</tbody>
+</table><p>定義以下變數作加總用途</p>
+
+<table>
+<thead>
+<tr>
+<th>變數</th>
+<th>意義</th>
+<th>初始數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count1</td>
+<td>1元</td>
+<td>0</td>
+</tr>
+<tr>
+<td>count2</td>
+<td>2元</td>
+<td>0</td>
+</tr>
+<tr>
+<td>count5</td>
+<td>5元</td>
+<td>0</td>
+</tr>
+<tr>
+<td>count10</td>
+<td>10元</td>
+<td>0</td>
+</tr>
+<tr>
+<td>total</td>
+<td>總金額</td>
+<td>0</td>
+</tr>
+</tbody>
+</table><pre><code>void(* resetFunc) (void) = 0;
+</code></pre>
+<p>定義記憶體0為重設</p>
+<h4 id="void-setup...">void setup(){…}</h4>
+<pre><code>void setup() {
+  pinMode(coin1 , INPUT);
+  pinMode(coin2 , INPUT);
+  pinMode(coin5, INPUT);
+  pinMode(coin10, INPUT);
+  pinMode(btn, INPUT_PULLUP);
+  lcd.noBacklight(); // You can turn the backlight off by setting it to LOW instead of HIGH
+  lcd.begin(16, 2);
+  lcd.write(EEPROM.read(5));
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome");
+  delay(3000);
+}
+</code></pre>
+<ol>
+<li>
+<p><code>pinMode</code>定義各插槽變數為輸入<code>INPUT</code></p>
+<p><code>pinMode(coin1 , INPUT);</code><br>
+<code>pinMode(coin2 , INPUT);</code><br>
+<code>pinMode(coin5, INPUT);</code><br>
+<code>pinMode(coin10, INPUT);</code><br>
+<code>pinMode(btn, INPUT_PULLUP);</code></p>
+</li>
+<li>
+<p>定義顯示屏</p>
+<p><code>lcd.noBacklight();</code>  沒有背光<br>
+<code>lcd.begin(16, 2);</code>  初始化LCD<br>
+<code>lcd.write(EEPROM.read(5));</code>  初始化EEPROM<br>
+<code>lcd.setCursor(0, 0);</code>  定位字句<br>
+<code>lcd.print("Welcome");</code>  顯示Welcome<br>
+<code>delay(3000);</code>  停頓3秒</p>
+</li>
+</ol>
+<h4 id="void-loop..">void loop(){…}</h4>
+<pre><code>void loop() {
+  btnState = digitalRead(btn);
+
+  if (btnState == LOW) {
+    
+    lcd.clear();
+    delay(1000);
+    lcd.setCursor(0, 0);
+    lcd.print("THANKS");
+    delay(2000);
+    resetFunc();
+    
+  } else {
+    
+    spr1 = analogRead(coin1); //read the state of coi100n and store it as ir100
+    spr2 = analogRead(coin2); //read the state of coi100n and store it as ir200
+    spr5 = analogRead(coin5); //read the state of coi100n and store it as ir500
+    spr10 = analogRead(coin10);
+
+
+    if (spr1 &lt;= 10) {
+      count1 += 1;
+      delay(100);
+    }
+    
+    if (spr2 &lt;= 10) {
+      count2 += 2;
+      delay(100);
+    }
+    
+    if (spr5 &lt;= 10) {
+      count5 += 5;
+      delay(100);
+    }
+
+    if (spr10 &lt;= 10) {
+      count10 += 10;
+      delay(100);
+    }
+
+    total = count1 + count2 + count5 + count10;
+    EEPROM.write(5, total);
+    
+    lcd.setCursor(0, 1);
+    lcd.print("TOTAL:");
+    lcd.setCursor(7, 1);
+    lcd.print(total);
+  }
+}
+</code></pre>
 
