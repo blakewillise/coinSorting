@@ -220,7 +220,7 @@ int count1, count2, count5, count10, total = 0;
   delay(3000);
 }
 </code></pre>
-<ol>
+<ul>
 <li>
 <p><code>pinMode</code>定義各插槽變數為輸入<code>INPUT</code></p>
 <p><code>pinMode(coin1 , INPUT);</code><br>
@@ -238,7 +238,7 @@ int count1, count2, count5, count10, total = 0;
 <code>lcd.print("Welcome");</code>  顯示Welcome<br>
 <code>delay(3000);</code>  停頓3秒</p>
 </li>
-</ol>
+</ul>
 <h4 id="void-loop..">void loop(){…}</h4>
 <pre><code>void loop() {
   btnState = digitalRead(btn);
@@ -254,9 +254,9 @@ int count1, count2, count5, count10, total = 0;
     
   } else {
     
-    spr1 = analogRead(coin1); //read the state of coi100n and store it as ir100
-    spr2 = analogRead(coin2); //read the state of coi100n and store it as ir200
-    spr5 = analogRead(coin5); //read the state of coi100n and store it as ir500
+    spr1 = analogRead(coin1); 
+    spr2 = analogRead(coin2); 
+    spr5 = analogRead(coin5); 
     spr10 = analogRead(coin10);
 
 
@@ -290,4 +290,54 @@ int count1, count2, count5, count10, total = 0;
   }
 }
 </code></pre>
+<ul>
+<li>用<code>btnState</code>設計流程控制</li>
+</ul>
+<p><code>btnState = digitalRead(btn);</code>以數碼方式讀取<code>btn</code>並寫入<code>btnState</code></p>
+<h5 id="流程控制">流程控制</h5>
+<ol>
+<li>
+<p>如果<br>
+<code>btnState</code>為低電壓，表示捐獻者已按確認掣，觸發以下程式</p>
+<p><code>lcd.clear();</code>  清空顯示屏<br>
+<code>delay(1000);</code>  停頓1秒<br>
+<code>lcd.setCursor(0, 0);</code>  定位字句<br>
+<code>lcd.print("THANKS");</code>  顯示"THANKS"<br>
+<code>delay(2000);</code>  停頓2秒<br>
+<code>resetFunc();</code>  重設程式</p>
+</li>
+<li>
+<p>否則，觸發以下程式<br>
+<code>spr1 = analogRead(coin1);</code><br>
+<code>spr2 = analogRead(coin2);</code><br>
+<code>spr5 = analogRead(coin5);</code><br>
+<code>spr10 = analogRead(coin10);</code></p>
+</li>
+</ol>
 
+<table>
+<thead>
+<tr>
+<th>以類比方式讀取</th>
+<th>並寫入</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coin1</td>
+<td>spr1</td>
+</tr>
+<tr>
+<td>coin2</td>
+<td>spr2</td>
+</tr>
+<tr>
+<td>coin5</td>
+<td>spr5</td>
+</tr>
+<tr>
+<td>coin10</td>
+<td>spr10</td>
+</tr>
+</tbody>
+</table>
