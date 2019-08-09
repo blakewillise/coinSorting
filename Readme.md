@@ -25,8 +25,7 @@ I am Blake Willis, this is project coin-sorting. If you have any enquiries, feel
 <p><a href="https://www.youtube.com/watch?v=nJhf1VdbPq8">影片介紹</a></p>
 <p>Arduino是一個開發各類設備，讓你比台式電腦更能充分感知和控制物理世界的生態系統。 Arduino是一個基於一系列單片機電路板的開源物理計算平台，一個編寫用於Arduino和Genuino開發板的軟件開發環境和一個擁有活躍開發者和用戶社區。Arduino可用於開發交互式物體，接受來自各類開關或傳感器的輸入，並能控制各種燈光、馬達和其他物理輸出裝置。 Arduino項目可以單獨運行，也可以與您計算機上運行的軟件（Processing、MaxMSP）配合使用。</p>
 <h3 id="iici2c-1602-lcd模組">IIC/I2C 1602 LCD模組</h3>
-<p>適用於Arduino</p>
-<p>支援<code>IIC I2C</code>協定，免焊接、只需用 Arduino 四個接口</p>
+<p>適用於Arduino，支援<code>IIC I2C</code>協定，免焊接、只需用 Arduino 四個接口</p>
 <p>接線說明：</p>
 <pre><code>LCD 1602 LCM I2C → Arduino UNO（Arduino nano）
 GND→GND
@@ -104,10 +103,10 @@ void loop() {
 #include &lt;LiquidCrystal_I2C.h&gt;
 #include &lt;EEPROM.h&gt;
 </code></pre>
-<p>標頭檔：用以準備編譯以下程式碼</p>
+<p>☝️ 標頭檔：用以準備編譯以下程式碼</p>
 <pre><code>LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE); 
 </code></pre>
-<p>初始化顯示屏設置</p>
+<p>☝️ 初始化顯示屏設置</p>
 <pre><code>const int coin1 = A0;    
 const int coin2 = A1;
 const int coin5 = A2;
@@ -116,7 +115,7 @@ const int btn = 2;
 int spr1, spr2, spr5, spr10, btnState = 0;
 int count1, count2, count5, count10, total = 0;
 </code></pre>
-<p>定義插槽及其對應變數為以下設定</p>
+<p>☝️ 定義插槽及其對應變數為以下設定</p>
 
 <table>
 <thead>
@@ -165,7 +164,7 @@ int count1, count2, count5, count10, total = 0;
 <td>0</td>
 </tr>
 </tbody>
-</table><p>定義以下變數作加總用途</p>
+</table><p>👇 定義以下變數作加總用途</p>
 
 <table>
 <thead>
@@ -204,7 +203,8 @@ int count1, count2, count5, count10, total = 0;
 </tbody>
 </table><pre><code>void(* resetFunc) (void) = 0;
 </code></pre>
-<p>定義記憶體0為重設</p>
+<p>☝️定義記憶體0為重設</p>
+<h1 id="section"></h1>
 <h4 id="void-setup...">void setup(){…}</h4>
 <pre><code>void setup() {
   pinMode(coin1 , INPUT);
@@ -239,6 +239,7 @@ int count1, count2, count5, count10, total = 0;
 <code>delay(3000);</code>  停頓3秒</p>
 </li>
 </ul>
+<h1 id="section-1"></h1>
 <h4 id="void-loop..">void loop(){…}</h4>
 <pre><code>void loop() {
   btnState = digitalRead(btn);
@@ -310,7 +311,7 @@ int count1, count2, count5, count10, total = 0;
 <p>否則，觸發以下程式</p>
 </li>
 </ol>
-<h1 id="section"></h1>
+<hr>
 <pre><code>    spr1 = analogRead(coin1);   
     spr2 = analogRead(coin2);  
     spr5 = analogRead(coin5);  
@@ -342,7 +343,7 @@ int count1, count2, count5, count10, total = 0;
 <td>spr10</td>
 </tr>
 </tbody>
-</table><h1 id="section-1"></h1>
+</table><hr>
 <p>點算1元</p>
 <pre><code>if (spr1 &lt;= 10) {
     count1 += 1;
@@ -370,10 +371,10 @@ int count1, count2, count5, count10, total = 0;
     delay(100);
     }
 </code></pre>
-<h1 id="section-2"></h1>
+<hr>
 <p><code>total = count1 + count2 + count5 + count10;</code>  計算總數<br>
 <code>EEPROM.write(5, total);</code>  寫入記憶體儲存</p>
-<h1 id="section-3"></h1>
+<hr>
 <p><code>lcd.setCursor(0, 1);</code>  定位字句<br>
 <code>lcd.print("TOTAL:");</code>  顯示"TOTAL:"<br>
 <code>lcd.setCursor(7, 1);</code>  定位字句<br>
