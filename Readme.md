@@ -42,11 +42,11 @@ SCL→SCL(或A5接口)
 <p>從這個式子我們可以看出，電壓和電流成正比的關係。同時電流和電阻成反比。<br>
 電阻的單位稱為歐姆(Ohm)通常記為：Ω。由歐姆定律可界定歐姆之定義如下：若在電阻上施予一伏特的電壓，可得到一安培的電流，就稱這個電阻的大小為1Ω。</p>
 <p><img src="https://media.rs-online.com/t_large/F4777928-01.jpg" alt="enter image description here"><br>
-1kΩ = 1000Ω</p>
+<strong><code>1kΩ = 1000Ω</code></strong></p>
 <h3 id="杜邦線">杜邦線</h3>
 <p><img src="https://www.taiwaniot.com.tw/wp-content/uploads/2015/12/40p_bump-300x300.jpg" alt="enter image description here"></p>
 <h3 id="麵包板">麵包板</h3>
-<p><img src="https://img.ruten.com.tw/s1/0/55/cd/21813829421517_943.jpg" alt="enter image description here"></p>
+<p><img src="https://ct.yimg.com/xd/api/res/1.2/w3Wu9voMSi9yWVONaR3URg--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD0zODY7cT04NTtyb3RhdGU9YXV0bzt3PTQxMA--/https://s.yimg.com/ob/image/e5b1f049-1469-43d6-99db-6f7771557d6a.jpg" alt="enter image description here"></p>
 <h2 id="軟件介紹-software-introduction">軟件介紹 Software Introduction</h2>
 <h3 id="arduino-ide">Arduino IDE</h3>
 <p>集成開發環境 - 由Arduino.cc引入的官方軟件，主要用於在Arduino設備中編寫，編譯和上傳代碼。 幾乎所有Arduino模塊都與這個開源軟件兼容，並且隨時可以安裝和開始編譯代碼。</p>
