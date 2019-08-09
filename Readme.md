@@ -208,7 +208,8 @@ int count1, count2, count5, count10, total = 0;
 </table><h1 id="section-3"></h1>
 <pre><code>void(* resetFunc) (void) = 0;
 </code></pre>
-<h2 id="☝️定義記憶體0為重設">☝️定義記憶體0為重設</h2>
+<p>☝️定義記憶體0為重設</p>
+<hr>
 <h4 id="void-setup...">void setup(){…}</h4>
 <pre><code>void setup() {
   pinMode(coin1 , INPUT);
