@@ -3,11 +3,11 @@
 #include <LiquidCrystal_I2C.h>
 #include <EEPROM.h>
 
-LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE); // 0x27 is the I2C bus address for an unmodified module
+LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE); 
 
-const int coin1  = A0;    //input from ir sensor
+const int coin1 = A0;    
 const int coin2 = A1;
-const int coin5  = A2;
+const int coin5 = A2;
 const int coin10 = A3;
 const int btn = 2;
 int spr1, spr2, spr5, spr10, btnState = 0;
@@ -22,7 +22,7 @@ void setup() {
   pinMode(coin5, INPUT);
   pinMode(coin10, INPUT);
   pinMode(btn, INPUT_PULLUP);
-  lcd.noBacklight(); // You can turn the backlight off by setting it to LOW instead of HIGH
+  lcd.noBacklight(); 
   lcd.begin(16, 2);
   lcd.write(EEPROM.read(5));
   lcd.setCursor(0, 0);
