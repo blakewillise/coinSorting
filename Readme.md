@@ -105,9 +105,11 @@ void loop() {
 #include &lt;EEPROM.h&gt;
 </code></pre>
 <p>☝️ 標頭檔：用以準備編譯以下程式碼</p>
+<hr>
 <pre><code>LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE); 
 </code></pre>
 <p>☝️ 初始化顯示屏設置</p>
+<hr>
 <pre><code>const int coin1 = A0;    
 const int coin2 = A1;
 const int coin5 = A2;
@@ -165,7 +167,8 @@ int count1, count2, count5, count10, total = 0;
 <td>0</td>
 </tr>
 </tbody>
-</table><p>👇 定義以下變數作加總用途</p>
+</table><hr>
+<p>👇 定義以下變數作加總用途</p>
 
 <table>
 <thead>
@@ -202,7 +205,8 @@ int count1, count2, count5, count10, total = 0;
 <td>0</td>
 </tr>
 </tbody>
-</table><pre><code>void(* resetFunc) (void) = 0;
+</table><hr>
+<pre><code>void(* resetFunc) (void) = 0;
 </code></pre>
 <p>☝️定義記憶體0為重設</p>
 <h1 id="section"></h1>
@@ -256,39 +260,39 @@ int count1, count2, count5, count10, total = 0;
     
 	} else {
     
-    spr1 = analogRead(coin1); 
-    spr2 = analogRead(coin2); 
-    spr5 = analogRead(coin5); 
-    spr10 = analogRead(coin10);
-
-
-    if (spr1 &lt;= 10) {
-      count1 += 1;
-      delay(100);
-    }
-    
-    if (spr2 &lt;= 10) {
-      count2 += 2;
-      delay(100);
-    }
-    
-    if (spr5 &lt;= 10) {
-      count5 += 5;
-      delay(100);
-    }
-
-    if (spr10 &lt;= 10) {
-      count10 += 10;
-      delay(100);
-    }
-
-    total = count1 + count2 + count5 + count10;
-    EEPROM.write(5, total);
-    
-    lcd.setCursor(0, 1);
-    lcd.print("TOTAL:");
-    lcd.setCursor(7, 1);
-    lcd.print(total);
+       spr1 = analogRead(coin1); 
+       spr2 = analogRead(coin2); 
+       spr5 = analogRead(coin5); 
+       spr10 = analogRead(coin10);
+   
+   
+       if (spr1 &lt;= 10) {
+         count1 += 1;
+         delay(100);
+       }
+       
+       if (spr2 &lt;= 10) {
+         count2 += 2;
+         delay(100);
+       }
+       
+       if (spr5 &lt;= 10) {
+         count5 += 5;
+         delay(100);
+       }
+   
+       if (spr10 &lt;= 10) {
+         count10 += 10;
+         delay(100);
+       }
+   
+       total = count1 + count2 + count5 + count10;
+       EEPROM.write(5, total);
+       
+       lcd.setCursor(0, 1);
+       lcd.print("TOTAL:");
+       lcd.setCursor(7, 1);
+       lcd.print(total);
 	}
 }
 </code></pre>
