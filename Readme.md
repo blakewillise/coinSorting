@@ -344,28 +344,28 @@ int count1, count2, count5, count10, total = 0;
 <td>spr10</td>
 </tr>
 </tbody>
-</table><h1 id="section-2"></h1>
+</table><hr>
 <p>點算1元</p>
 <pre><code>if (spr1 &lt;= 10) {
     count1 += 1;
     delay(100);
     }
 </code></pre>
-<h1 id="section-3"></h1>
+<h1 id="section-2"></h1>
 <p>點算2元</p>
 <pre><code>if (spr2 &lt;= 10) {
     count2 += 2;
     delay(100);
     }
 </code></pre>
-<h1 id="section-4"></h1>
+<h1 id="section-3"></h1>
 <p>點算5元</p>
 <pre><code>if (spr5 &lt;= 10) {
     count5 += 5;
     delay(100);
     }
 </code></pre>
-<h1 id="section-5"></h1>
+<h1 id="section-4"></h1>
 <p>點算10元</p>
 <pre><code>if (spr10 &lt;= 10) {
     count10 += 10;
