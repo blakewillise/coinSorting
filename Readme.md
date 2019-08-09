@@ -245,16 +245,16 @@ int count1, count2, count5, count10, total = 0;
 <pre><code>void loop() {
   btnState = digitalRead(btn);
 
-  if (btnState == LOW) {
+	if (btnState == LOW) {
     
-    lcd.clear();
-    delay(1000);
-    lcd.setCursor(0, 0);
-    lcd.print("THANKS");
-    delay(2000);
-    resetFunc();
+        lcd.clear();
+        delay(1000);
+        lcd.setCursor(0, 0);
+        lcd.print("THANKS");
+        delay(2000);
+        resetFunc();
     
-  } else {
+	} else {
     
     spr1 = analogRead(coin1); 
     spr2 = analogRead(coin2); 
@@ -289,7 +289,7 @@ int count1, count2, count5, count10, total = 0;
     lcd.print("TOTAL:");
     lcd.setCursor(7, 1);
     lcd.print(total);
-  }
+	}
 }
 </code></pre>
 <ul>
