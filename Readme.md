@@ -244,7 +244,7 @@ int count1, count2, count5, count10, total = 0;
 <code>delay(3000);</code>  停頓3秒</p>
 </li>
 </ul>
-<h1 id="section-4"></h1>
+<hr>
 <h4 id="void-loop..">void loop(){…}</h4>
 <pre><code>void loop() {
   btnState = digitalRead(btn);
@@ -355,21 +355,21 @@ int count1, count2, count5, count10, total = 0;
     delay(100);
     }
 </code></pre>
-<h1 id="section-5"></h1>
+<h1 id="section-4"></h1>
 <p>點算2元</p>
 <pre><code>if (spr2 &lt;= 10) {
     count2 += 2;
     delay(100);
     }
 </code></pre>
-<h1 id="section-6"></h1>
+<h1 id="section-5"></h1>
 <p>點算5元</p>
 <pre><code>if (spr5 &lt;= 10) {
     count5 += 5;
     delay(100);
     }
 </code></pre>
-<h1 id="section-7"></h1>
+<h1 id="section-6"></h1>
 <p>點算10元</p>
 <pre><code>if (spr10 &lt;= 10) {
     count10 += 10;
