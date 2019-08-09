@@ -163,7 +163,7 @@ int count1, count2, count5, count10, total = 0;
 <td>btn</td>
 <td>btnState</td>
 <td>確認掣</td>
-<td>7 <code>Digital</code></td>
+<td>2 <code>Digital</code></td>
 <td>0</td>
 </tr>
 </tbody>
