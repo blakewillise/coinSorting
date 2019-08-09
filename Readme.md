@@ -299,7 +299,7 @@ int count1, count2, count5, count10, total = 0;
 <h5 id="流程控制">流程控制</h5>
 <ol>
 <li>
-<p>如果<br>
+<p><strong>如果</strong><br>
 <code>btnState</code>為低電壓，表示捐獻者已按確認掣，觸發以下程式</p>
 <p><code>lcd.clear();</code>  清空顯示屏<br>
 <code>delay(1000);</code>  停頓1秒<br>
@@ -309,7 +309,7 @@ int count1, count2, count5, count10, total = 0;
 <code>resetFunc();</code>  重設程式</p>
 </li>
 <li>
-<p>否則，觸發以下程式</p>
+<p><strong>否則</strong>，觸發以下程式</p>
 </li>
 </ol>
 <hr>
