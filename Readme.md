@@ -105,11 +105,11 @@ void loop() {
 #include &lt;EEPROM.h&gt;
 </code></pre>
 <p>☝️ 標頭檔：用以準備編譯以下程式碼</p>
-<hr>
+<h1 id="section"></h1>
 <pre><code>LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE); 
 </code></pre>
 <p>☝️ 初始化顯示屏設置</p>
-<hr>
+<h1 id="section-1"></h1>
 <pre><code>const int coin1 = A0;    
 const int coin2 = A1;
 const int coin5 = A2;
@@ -167,7 +167,7 @@ int count1, count2, count5, count10, total = 0;
 <td>0</td>
 </tr>
 </tbody>
-</table><hr>
+</table><h1 id="section-2"></h1>
 <p>👇 定義以下變數作加總用途</p>
 
 <table>
@@ -205,11 +205,10 @@ int count1, count2, count5, count10, total = 0;
 <td>0</td>
 </tr>
 </tbody>
-</table><hr>
+</table><h1 id="section-3"></h1>
 <pre><code>void(* resetFunc) (void) = 0;
 </code></pre>
-<p>☝️定義記憶體0為重設</p>
-<h1 id="section"></h1>
+<h2 id="☝️定義記憶體0為重設">☝️定義記憶體0為重設</h2>
 <h4 id="void-setup...">void setup(){…}</h4>
 <pre><code>void setup() {
   pinMode(coin1 , INPUT);
@@ -244,7 +243,7 @@ int count1, count2, count5, count10, total = 0;
 <code>delay(3000);</code>  停頓3秒</p>
 </li>
 </ul>
-<h1 id="section-1"></h1>
+<h1 id="section-4"></h1>
 <h4 id="void-loop..">void loop(){…}</h4>
 <pre><code>void loop() {
   btnState = digitalRead(btn);
@@ -355,21 +354,21 @@ int count1, count2, count5, count10, total = 0;
     delay(100);
     }
 </code></pre>
-<h1 id="section-2"></h1>
+<h1 id="section-5"></h1>
 <p>點算2元</p>
 <pre><code>if (spr2 &lt;= 10) {
     count2 += 2;
     delay(100);
     }
 </code></pre>
-<h1 id="section-3"></h1>
+<h1 id="section-6"></h1>
 <p>點算5元</p>
 <pre><code>if (spr5 &lt;= 10) {
     count5 += 5;
     delay(100);
     }
 </code></pre>
-<h1 id="section-4"></h1>
+<h1 id="section-7"></h1>
 <p>點算10元</p>
 <pre><code>if (spr10 &lt;= 10) {
     count10 += 10;
