@@ -67,6 +67,7 @@ SCL→SCL(或A5接口)
 <p><a href="https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads/">下載最新檔案<code>😉不需解壓.zip檔😉</code></a></p>
 <p>用以準備編寫程式</p>
 <h2 id="電路圖schematic-diagram">電路圖Schematic Diagram</h2>
+<p><img src="https://drive.google.com/file/d/1M4C-RWgM2gbqmF3lBDOFo__evSKCIU-i/view?usp=sharing" alt="enter image description here"></p>
 <h2 id="程式碼code">程式碼Code</h2>
 <p><a href="https://github.com/blakewillise/coinSorting/blob/master/coinsorting.ino">按此查閱</a></p>
 <h3 id="基本認知">基本認知</h3>
