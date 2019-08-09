@@ -235,7 +235,7 @@ int count1, count2, count5, count10, total = 0;
 <code>lcd.begin(16, 2);</code>  初始化LCD<br>
 <code>lcd.write(EEPROM.read(5));</code>  初始化EEPROM<br>
 <code>lcd.setCursor(0, 0);</code>  定位字句<br>
-<code>lcd.print("Welcome");</code>  顯示Welcome<br>
+<code>lcd.print("Welcome");</code>  顯示"Welcome"<br>
 <code>delay(3000);</code>  停頓3秒</p>
 </li>
 </ul>
@@ -307,13 +307,15 @@ int count1, count2, count5, count10, total = 0;
 <code>resetFunc();</code>  重設程式</p>
 </li>
 <li>
-<p>否則，觸發以下程式<br>
-<code>spr1 = analogRead(coin1);</code><br>
-<code>spr2 = analogRead(coin2);</code><br>
-<code>spr5 = analogRead(coin5);</code><br>
-<code>spr10 = analogRead(coin10);</code></p>
+<p>否則，觸發以下程式</p>
 </li>
 </ol>
+<h1 id="section"></h1>
+<pre><code>    spr1 = analogRead(coin1);   
+    spr2 = analogRead(coin2);  
+    spr5 = analogRead(coin5);  
+    spr10 = analogRead(coin10)  
+</code></pre>
 
 <table>
 <thead>
@@ -340,4 +342,40 @@ int count1, count2, count5, count10, total = 0;
 <td>spr10</td>
 </tr>
 </tbody>
-</table>
+</table><h1 id="section-1"></h1>
+<p>點算1元</p>
+<pre><code>if (spr1 &lt;= 10) {
+    count1 += 1;
+    delay(100);
+    }
+</code></pre>
+<hr>
+<p>點算2元</p>
+<pre><code>if (spr2 &lt;= 10) {
+    count2 += 2;
+    delay(100);
+    }
+</code></pre>
+<hr>
+<p>點算5元</p>
+<pre><code>if (spr5 &lt;= 10) {
+    count5 += 5;
+    delay(100);
+    }
+</code></pre>
+<hr>
+<p>點算10元</p>
+<pre><code>if (spr10 &lt;= 10) {
+    count10 += 10;
+    delay(100);
+    }
+</code></pre>
+<h1 id="section-2"></h1>
+<p><code>total = count1 + count2 + count5 + count10;</code>  計算總數<br>
+<code>EEPROM.write(5, total);</code>  寫入記憶體儲存</p>
+<h1 id="section-3"></h1>
+<p><code>lcd.setCursor(0, 1);</code>  定位字句<br>
+<code>lcd.print("TOTAL:");</code>  顯示"TOTAL:"<br>
+<code>lcd.setCursor(7, 1);</code>  定位字句<br>
+<code>lcd.print(total);</code>  顯示計算後的總數</p>
+
