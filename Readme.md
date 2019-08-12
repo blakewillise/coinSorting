@@ -16,6 +16,7 @@ I am Blake Willis, this is project coin-sorting. If you have any enquiries, feel
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> 1kΩ 電阻</li>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> 杜邦線 <code>公對母 ＆ 公對公</code></li>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> 麵包板</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> 2腳掣 <code>push button</code></li>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> 9V電</li>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> USB接線</li>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> 錢幣</li>
