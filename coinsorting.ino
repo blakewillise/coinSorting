@@ -33,7 +33,7 @@ void loop() {
 		btnState = digitalRead(btn);
 
 		if (btnState == LOW) {
-				lcd.clear();
+				lcd.clear(); 
 				delay(500);
 				lcd.setCursor(3, 0);
 				lcd.print("THANK YOU!");
