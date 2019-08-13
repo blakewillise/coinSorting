@@ -82,11 +82,15 @@ void loop() {
   // put your main code here, to run repeatedly:
 
 }
+
+void ???(){
+
+}
 </code></pre>
 <p>Arduino 基本格式</p>
 <pre><code>#include &lt;???&gt; 
 </code></pre>
-<p>標頭檔：用以準備編譯以下程式碼</p>
+<p>標頭檔：用以準備編譯接著的程式碼</p>
 <pre><code>void setup() {
       // put your setup code here, to run once:
     
@@ -99,6 +103,11 @@ void loop() {
     }
 </code></pre>
 <p>放置主要程式的地方，此範圍重覆執行</p>
+<pre><code> void ???(){
+	
+	}
+</code></pre>
+<p>自訂函數，此範圍必須在<code>setup()</code> 或 <code>loop()</code> 中提及才可以運作</p>
 <h3 id="程式碼介紹">程式碼介紹</h3>
 <pre><code>#include &lt;Wire.h&gt;
 #include &lt;LCD.h&gt;
@@ -117,7 +126,7 @@ const int coin5 = A2;
 const int coin10 = A3;
 const int btn = 2;
 int spr1, spr2, spr5, spr10, btnState = 0;
-int count1, count2, count5, count10, total = 0;
+int count1, count2, count5, count10, total, totalcurr = 0;
 </code></pre>
 <p>☝️ 定義插槽及其對應變數為以下設定</p>
 
@@ -202,15 +211,16 @@ int count1, count2, count5, count10, total = 0;
 </tr>
 <tr>
 <td>total</td>
-<td>總金額</td>
+<td>累計總金額</td>
+<td>0</td>
+</tr>
+<tr>
+<td>totalcurr</td>
+<td>此次捐款的總金額</td>
 <td>0</td>
 </tr>
 </tbody>
-</table><h1 id="section-3"></h1>
-<pre><code>void(* resetFunc) (void) = 0;
-</code></pre>
-<p>☝️定義記憶體0為重設</p>
-<hr>
+</table><hr>
 <h4 id="void-setup...">void setup(){…}</h4>
 <pre><code>void setup() {
   pinMode(coin1 , INPUT);
@@ -220,7 +230,6 @@ int count1, count2, count5, count10, total = 0;
   pinMode(btn, INPUT_PULLUP);
   lcd.noBacklight(); // You can turn the backlight off by setting it to LOW instead of HIGH
   lcd.begin(16, 2);
-  lcd.write(EEPROM.read(5));
   lcd.setCursor(0, 0);
   lcd.print("Welcome");
   delay(3000);
@@ -239,7 +248,6 @@ int count1, count2, count5, count10, total = 0;
 <p>定義顯示屏</p>
 <p><code>lcd.noBacklight();</code>  沒有背光<br>
 <code>lcd.begin(16, 2);</code>  初始化LCD<br>
-<code>lcd.write(EEPROM.read(5));</code>  初始化EEPROM<br>
 <code>lcd.setCursor(0, 0);</code>  定位字句<br>
 <code>lcd.print("Welcome");</code>  顯示"Welcome"<br>
 <code>delay(3000);</code>  停頓3秒</p>
@@ -256,8 +264,38 @@ int count1, count2, count5, count10, total = 0;
         delay(1000);
         lcd.setCursor(0, 0);
         lcd.print("THANKS");
-        delay(2000);
-        resetFunc();
+        delay(1500);
+        
+	    lcd.clear(); //NEXT PAGE
+	    delay(500);
+	    
+	    displayCoinAmount();
+	    
+	    lcd.clear();  //NEXT PAGE
+	    delay(500);
+	    
+	    total += totalcurr;
+	    EEPROM.write(5, total);
+	    lcd.setCursor(0,0);
+	    lcd.print("Now we have");
+	    lcd.setCursor(0,1);
+	    lcd.print("HKD:");
+	    lcd.setCursor(4,1);
+	    lcd.print(EEPROM.read(5));
+	    delay(1500);
+	    
+	    count1 = 0;
+	    count2 = 0;
+	    count5 = 0;
+	    count10 = 0;
+	    totalcurr = 0;
+	    btnState = HIGH;
+	    
+	    lcd.clear();
+	    delay(1000);
+	    lcd.setCursor(0, 0);
+	    lcd.print("Welcome");
+	    delay(3000);
     
 	} else {
     
@@ -287,8 +325,7 @@ int count1, count2, count5, count10, total = 0;
          delay(100);
        }
    
-       total = count1 + count2 + count5 + count10;
-       EEPROM.write(5, total);
+	   totalcurr = count1 + 2 * count2 + 5 * count5 + 10 * count10;
        
        lcd.setCursor(0, 1);
        lcd.print("TOTAL:");
@@ -303,19 +340,89 @@ int count1, count2, count5, count10, total = 0;
 <p><code>btnState = digitalRead(btn);</code>以數碼方式讀取<code>btn</code>並寫入<code>btnState</code></p>
 <h5 id="流程控制">流程控制</h5>
 <ol>
-<li>
-<p><strong>如果</strong><br>
-<code>btnState</code>為低電壓，表示捐獻者已按確認掣，觸發以下程式</p>
-<p><code>lcd.clear();</code>  清空顯示屏<br>
-<code>delay(1000);</code>  停頓1秒<br>
-<code>lcd.setCursor(0, 0);</code>  定位字句<br>
-<code>lcd.print("THANKS");</code>  顯示"THANKS"<br>
-<code>delay(2000);</code>  停頓2秒<br>
-<code>resetFunc();</code>  重設程式</p>
-</li>
-<li>
-<p><strong>否則</strong>，觸發以下程式</p>
-</li>
+<li><strong>如果</strong><br>
+<code>btnState</code>為低電壓，表示捐獻者已按確認掣，觸發以下程式</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>程式</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lcd.clear();</code></td>
+<td>清空顯示屏</td>
+</tr>
+<tr>
+<td><code>delay(1000);</code></td>
+<td>停頓1秒</td>
+</tr>
+<tr>
+<td><code>lcd.setCursor(0, 0);</code></td>
+<td>定位字句</td>
+</tr>
+<tr>
+<td><code>lcd.print("THANKS");</code></td>
+<td>顯示"THANKS"</td>
+</tr>
+<tr>
+<td><code>delay(1500);</code></td>
+<td>停頓1.5秒</td>
+</tr>
+<tr>
+<td><code>lcd.clear();</code>    		    <code>delay(500);</code></td>
+<td>下頁</td>
+</tr>
+<tr>
+<td><code>displayCoinAmount();</code></td>
+<td>跳到自訂函數：<em>displayCoinAmount</em></td>
+</tr>
+<tr>
+<td><code>lcd.clear();</code>    		    <code>delay(500);</code></td>
+<td>下頁</td>
+</tr>
+<tr>
+<td><code>total += totalcurr;</code></td>
+<td>將此次捐款加到善款總金額</td>
+</tr>
+<tr>
+<td><code>EEPROM.write(5, total);</code></td>
+<td>更新後的善款總金額寫入<code>EEPROM</code>記憶體</td>
+</tr>
+<tr>
+<td><code>lcd.setCursor(0,0);</code></td>
+<td>定位字句</td>
+</tr>
+<tr>
+<td><code>lcd.print("Now we have");</code></td>
+<td>顯示"Now we have"</td>
+</tr>
+<tr>
+<td><code>lcd.setCursor(0,1);</code></td>
+<td>定位字句</td>
+</tr>
+<tr>
+<td><code>lcd.print("HKD:");</code></td>
+<td>顯示"HKD:"</td>
+</tr>
+<tr>
+<td><code>lcd.setCursor(4,1);</code></td>
+<td>定位字句</td>
+</tr>
+<tr>
+<td><code>lcd.print(EEPROM.read(5));</code></td>
+<td>顯示<code>EEPROM</code>記憶體中儲存的金額</td>
+</tr>
+<tr>
+<td><code>delay(1500);</code></td>
+<td>停頓1.5秒</td>
+</tr>
+</tbody>
+</table><ol start="2">
+<li><strong>否則</strong>，觸發以下程式</li>
 </ol>
 <hr>
 <pre><code>    spr1 = analogRead(coin1);   
@@ -356,21 +463,21 @@ int count1, count2, count5, count10, total = 0;
     delay(100);
     }
 </code></pre>
-<h1 id="section-4"></h1>
+<h1 id="section-3"></h1>
 <p>點算2元</p>
 <pre><code>if (spr2 &lt;= 10) {
     count2 += 2;
     delay(100);
     }
 </code></pre>
-<h1 id="section-5"></h1>
+<h1 id="section-4"></h1>
 <p>點算5元</p>
 <pre><code>if (spr5 &lt;= 10) {
     count5 += 5;
     delay(100);
     }
 </code></pre>
-<h1 id="section-6"></h1>
+<h1 id="section-5"></h1>
 <p>點算10元</p>
 <pre><code>if (spr10 &lt;= 10) {
     count10 += 10;
@@ -385,4 +492,6 @@ int count1, count2, count5, count10, total = 0;
 <code>lcd.print("TOTAL:");</code>  顯示"TOTAL:"<br>
 <code>lcd.setCursor(7, 1);</code>  定位字句<br>
 <code>lcd.print(total);</code>  顯示計算後的總數</p>
+<hr>
+<p>###自訂函數：<em>displayCoinAmount</em></p>
 
