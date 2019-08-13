@@ -499,17 +499,17 @@ int count1, count2, count5, count10, total, totalcurr = 0;
     lcd.print("$1 x ");
     lcd.setCursor(5, 0);
     lcd.print(count1);
-    
+        
     lcd.setCursor(0, 1);
     lcd.print("$2 x ");
     lcd.setCursor(5, 1);
     lcd.print(count2);
     delay(2000);
-
+    
     
     lcd.clear();  //NEXT PAGE
     delay(500);
-
+    
     lcd.setCursor(0, 0);
     lcd.print("$5 x ");
     lcd.setCursor(5, 0);
