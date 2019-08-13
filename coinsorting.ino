@@ -44,9 +44,9 @@ void loop() {
     
   } else {
     
-    spr1 = analogRead(coin1); //read the state of coi100n and store it as ir100
-    spr2 = analogRead(coin2); //read the state of coi100n and store it as ir200
-    spr5 = analogRead(coin5); //read the state of coi100n and store it as ir500
+    spr1 = analogRead(coin1);
+    spr2 = analogRead(coin2);
+    spr5 = analogRead(coin5);
     spr10 = analogRead(coin10);
 
 
