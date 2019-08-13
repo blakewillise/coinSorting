@@ -493,5 +493,5 @@ int count1, count2, count5, count10, total, totalcurr = 0;
 <code>lcd.setCursor(7, 1);</code>  定位字句<br>
 <code>lcd.print(total);</code>  顯示計算後的總數</p>
 <hr>
-<p>###自訂函數：<em>displayCoinAmount</em></p>
+<h3 id="自訂函數：displaycoinamount">自訂函數：<em>displayCoinAmount</em></h3>
 
