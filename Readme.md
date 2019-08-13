@@ -493,5 +493,32 @@ int count1, count2, count5, count10, total, totalcurr = 0;
 <code>lcd.setCursor(7, 1);</code>  定位字句<br>
 <code>lcd.print(total);</code>  顯示計算後的總數</p>
 <hr>
-<h3 id="自訂函數：displaycoinamount">自訂函數：<em>displayCoinAmount</em></h3>
+<h4 id="自訂函數：displaycoinamount">自訂函數：<em>displayCoinAmount</em></h4>
+<h1 id="section-6"></h1>
+<pre><code>    lcd.setCursor(0, 0);
+    lcd.print("$1 x ");
+    lcd.setCursor(5, 0);
+    lcd.print(count1);
+    
+    lcd.setCursor(0, 1);
+    lcd.print("$2 x ");
+    lcd.setCursor(5, 1);
+    lcd.print(count2);
+    delay(2000);
+
+    
+    lcd.clear();  //NEXT PAGE
+    delay(500);
+
+    lcd.setCursor(0, 0);
+    lcd.print("$5 x ");
+    lcd.setCursor(5, 0);
+    lcd.print(count5);
+    
+    lcd.setCursor(0, 1);
+    lcd.print("$10x ");
+    lcd.setCursor(5, 1);
+    lcd.print(count10);
+    delay(2000);
+</code></pre>
 
