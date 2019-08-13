@@ -486,8 +486,7 @@ int count1, count2, count5, count10, total, totalcurr = 0;
     }
 </code></pre>
 <hr>
-<p><code>total = count1 + count2 + count5 + count10;</code>  計算總數<br>
-<code>EEPROM.write(5, total);</code>  寫入記憶體儲存</p>
+<p><code>totalcurr = count1 + count2 + count5 + count10;</code>  計算此次捐款的金額</p>
 <hr>
 <p><code>lcd.setCursor(0, 1);</code>  定位字句<br>
 <code>lcd.print("TOTAL:");</code>  顯示"TOTAL:"<br>
