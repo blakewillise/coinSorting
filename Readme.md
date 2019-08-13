@@ -26,7 +26,8 @@ I am Blake Willis, this is project coin-sorting. If you have any enquiries, feel
 <p><a href="https://www.youtube.com/watch?v=nJhf1VdbPq8">影片介紹</a></p>
 <p>Arduino是一個開發各類設備，讓你比台式電腦更能充分感知和控制物理世界的生態系統。 Arduino是一個基於一系列單片機電路板的開源物理計算平台，一個編寫用於Arduino和Genuino開發板的軟件開發環境和一個擁有活躍開發者和用戶社區。Arduino可用於開發交互式物體，接受來自各類開關或傳感器的輸入，並能控制各種燈光、馬達和其他物理輸出裝置。 Arduino項目可以單獨運行，也可以與您計算機上運行的軟件（Processing、MaxMSP）配合使用。</p>
 <h3 id="iici2c-1602-lcd模組">IIC/I2C 1602 LCD模組</h3>
-<p>適用於Arduino，支援<code>IIC I2C</code>協定，免焊接、只需用 Arduino 四個接口</p>
+<p><img src="https://www.taiwaniot.com.tw/wp-content/uploads/2016/04/s-l1000-600x600.jpg" alt="enter image description here"><br>
+適用於Arduino，支援<code>IIC I2C</code>協定，免焊接、只需用 Arduino 四個接口</p>
 <p>接線說明：</p>
 <pre><code>LCD 1602 LCM I2C → Arduino UNO（Arduino nano）
 GND→GND
@@ -491,36 +492,32 @@ int count1, count2, count5, count10, total, totalcurr = 0;
 <p><code>lcd.setCursor(0, 1);</code>  定位字句<br>
 <code>lcd.print("TOTAL:");</code>  顯示"TOTAL:"<br>
 <code>lcd.setCursor(7, 1);</code>  定位字句<br>
-<code>lcd.print(total);</code>  顯示計算後的總數</p>
+<code>lcd.print(totalcurr);</code>  顯示計算後此次捐款的金額</p>
 <hr>
 <h4 id="自訂函數：displaycoinamount">自訂函數：<em>displayCoinAmount</em></h4>
 <h1 id="section-6"></h1>
-<pre><code>void displayCoinAmount(){
-    lcd.setCursor(0, 0);
+<pre><code>    lcd.setCursor(0, 0);
     lcd.print("$1 x ");
     lcd.setCursor(5, 0);
     lcd.print(count1);
-        
-    lcd.setCursor(0, 1);
+</code></pre>
+<p>☝️ 顯示1元的數量</p>
+<pre><code>    lcd.setCursor(0, 1);
     lcd.print("$2 x ");
     lcd.setCursor(5, 1);
     lcd.print(count2);
-    delay(2000);
-    
-       
-    lcd.clear();  //NEXT PAGE
-    delay(500);
-    
-    lcd.setCursor(0, 0);
+</code></pre>
+<p>☝️ 顯示2元的數量</p>
+<pre><code>    lcd.setCursor(0, 0);
     lcd.print("$5 x ");
     lcd.setCursor(5, 0);
     lcd.print(count5);
-       
-    lcd.setCursor(0, 1);
+</code></pre>
+<p>☝️ 顯示5元的數量</p>
+<pre><code>    lcd.setCursor(0, 1);
     lcd.print("$10x ");
     lcd.setCursor(5, 1);
     lcd.print(count10);
-    delay(2000);
-}
 </code></pre>
+<p>☝️ 顯示10元的數量</p>
 
