@@ -1,4 +1,7 @@
+---
 
+
+---
 
 <h1 id="錢幣點算計劃">錢幣點算計劃</h1>
 <p>😆Hey folks😆<br>
@@ -117,6 +120,10 @@ void ???(){
 <pre><code>LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE); 
 </code></pre>
 <p>☝️ 初始化顯示屏設置</p>
+<p>PS: 如果出現<code>方塊字</code>可試以下程式碼</p>
+<pre><code>LiquidCrystal_I2C lcd(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
+</code></pre>
+<p><a href="https://playground.arduino.cc/Main/I2cScanner/">深入了解問題根源及解決方法</a></p>
 <h1 id="section-1"></h1>
 <pre><code>const int coin1 = A0;    
 const int coin2 = A1;
