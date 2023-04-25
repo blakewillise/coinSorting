@@ -64,7 +64,7 @@ SCL→SCL(或A5接口)
 </tr>
 </tbody>
 </table><h3 id="newliquidcrystal第三方資料庫">NewliquidCrystal第三方資料庫</h3>
-<p><a href="https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads/">下載最新檔案<code>😉不需解壓.zip檔😉</code></a></p>
+<p><a href="https://github.com/fmalpartida/New-LiquidCrystal/archive/refs/heads/master.zip">下載最新檔案<code>😉不需解壓.zip檔😉</code></a></p>
 <p>用以準備編寫程式</p>
 <h2 id="電路圖schematic-diagram">電路圖Schematic Diagram</h2>
 <p><a href="https://msschadmin.sharepoint.com/:i:/s/msteams_31fc87/EW-cuJFqN8tKjBVpLYmLFSIB0M7GMQDmU_eNKMLwRCFTbg?e=Yg7dlb">按此查閱</a></p>
@@ -496,7 +496,6 @@ int count1, count2, count5, count10, total, totalcurr = 0;
 <code>lcd.print(totalcurr);</code>  顯示計算後此次捐款的金額</p>
 <hr>
 <h4 id="自訂函數：displaycoinamount">自訂函數：<em>displayCoinAmount</em></h4>
-<h1 id="section-6"></h1>
 <pre><code>    lcd.setCursor(0, 0);
     lcd.print("$1 x ");
     lcd.setCursor(5, 0);
