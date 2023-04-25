@@ -4,8 +4,6 @@
 ---
 
 <h1 id="錢幣點算計劃">錢幣點算計劃</h1>
-<p>😆Hey folks😆<br>
-I am Blake Willis, this is project coin-sorting. If you have any enquiries, feel free to 💬PM💬 me.</p>
 <h2 id="引言">引言</h2>
 <p>本計劃採用以錢幣尺寸分類的設計，並於入銀過程中進行點算。</p>
 <h2 id="硬件介紹">硬件介紹</h2>
@@ -69,7 +67,7 @@ SCL→SCL(或A5接口)
 <p><a href="https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads/">下載最新檔案<code>😉不需解壓.zip檔😉</code></a></p>
 <p>用以準備編寫程式</p>
 <h2 id="電路圖schematic-diagram">電路圖Schematic Diagram</h2>
-<p><a href="https://drive.google.com/file/d/1_ZwQbjmX443f8FF7ktb-FBn5fWRZcUtL/view?usp=sharing">按此查閱</a></p>
+<p><a href="https://msschadmin.sharepoint.com/:i:/s/msteams_31fc87/EW-cuJFqN8tKjBVpLYmLFSIB0M7GMQDmU_eNKMLwRCFTbg?e=Yg7dlb">按此查閱</a></p>
 <h2 id="程式碼code">程式碼Code</h2>
 <p><a href="https://github.com/blakewillise/coinSorting/blob/master/coinsorting.ino">按此查閱</a></p>
 <h3 id="基本認知">基本認知</h3>
